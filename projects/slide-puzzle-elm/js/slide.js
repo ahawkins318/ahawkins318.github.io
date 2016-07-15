@@ -8327,13 +8327,11 @@ var _user$project$Model$displayWidth = function (model) {
 			_elm_lang$core$Basics$toFloat(model.size)));
 };
 var _user$project$Model$shuffleCmd = function (size) {
-	return function (_p0) {
-		return A2(
-			_elm_lang$core$Random$generate,
-			_user$project$Messages$constructRandomDirsMsg,
-			_user$project$Direction$arrowCodeGenerator(_p0));
-	}(
-		A2(_elm_lang$core$Basics$min, 2000, 20 * size));
+	var numShuffles = A2(_elm_lang$core$Basics$min, 2000, 20 * size);
+	return A2(
+		_elm_lang$core$Random$generate,
+		_user$project$Messages$constructRandomDirsMsg,
+		_user$project$Direction$arrowCodeGenerator(numShuffles));
 };
 var _user$project$Model$solvedModelData = function (size) {
 	return A2(
