@@ -8326,6 +8326,15 @@ var _user$project$Model$displayWidth = function (model) {
 		_elm_lang$core$Basics$sqrt(
 			_elm_lang$core$Basics$toFloat(model.size)));
 };
+var _user$project$Model$shuffleCmd = function (size) {
+	return function (_p0) {
+		return A2(
+			_elm_lang$core$Random$generate,
+			_user$project$Messages$constructRandomDirsMsg,
+			_user$project$Direction$arrowCodeGenerator(_p0));
+	}(
+		A2(_elm_lang$core$Basics$min, 2000, 20 * size));
+};
 var _user$project$Model$solvedModelData = function (size) {
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
@@ -8347,25 +8356,18 @@ var _user$project$Model$Model = F3(
 	function (a, b, c) {
 		return {size: a, data: b, blankIndex: c};
 	});
-var _user$project$Model$requestShuffledModel = function (size) {
-	var command = function (_p0) {
-		return A2(
-			_elm_lang$core$Random$generate,
-			_user$project$Messages$constructRandomDirsMsg,
-			_user$project$Direction$arrowCodeGenerator(_p0));
-	}(
-		A2(_elm_lang$core$Basics$min, 2000, 20 * size));
-	return {
-		ctor: '_Tuple2',
-		_0: A3(
-			_user$project$Model$Model,
-			size,
-			_user$project$Model$solvedModelData(size),
-			size - 1),
-		_1: command
-	};
+var _user$project$Model$unshuffledModel = function (size) {
+	return A3(
+		_user$project$Model$Model,
+		size,
+		_user$project$Model$solvedModelData(size),
+		size - 1);
 };
-var _user$project$Model$init = _user$project$Model$requestShuffledModel(9);
+var _user$project$Model$init = {
+	ctor: '_Tuple2',
+	_0: _user$project$Model$unshuffledModel(9),
+	_1: _user$project$Model$shuffleCmd(9)
+};
 
 var _user$project$Update$swapModelData = F2(
 	function (model, adjacentIndex) {
@@ -8449,7 +8451,12 @@ var _user$project$Update$update = F2(
 			case 'Noop':
 				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 			case 'NewSize':
-				return _user$project$Model$requestShuffledModel(_p5._0);
+				var _p6 = _p5._0;
+				return {
+					ctor: '_Tuple2',
+					_0: _user$project$Model$unshuffledModel(_p6),
+					_1: _user$project$Model$shuffleCmd(_p6)
+				};
 			case 'KeyPressed':
 				return {
 					ctor: '_Tuple2',
