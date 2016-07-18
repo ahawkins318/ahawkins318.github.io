@@ -8666,7 +8666,7 @@ var _user$project$View$header = A2(
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Use arrow keys or asdw to play the puzzle')
+					_elm_lang$html$Html$text('Use arrow keys to play the puzzle')
 				]))
 		]));
 var _user$project$View$view = function (model) {
