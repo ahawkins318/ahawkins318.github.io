@@ -8470,7 +8470,7 @@ var _user$project$Update$update = F2(
 		}
 	});
 var _user$project$Update$subscriptions = function (model) {
-	return _elm_lang$keyboard$Keyboard$presses(_user$project$Messages$constructKeyMsg);
+	return _elm_lang$keyboard$Keyboard$downs(_user$project$Messages$constructKeyMsg);
 };
 
 var _user$project$View$splitEvery = F2(
@@ -8666,7 +8666,7 @@ var _user$project$View$header = A2(
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Use arrow keys to play the puzzle')
+					_elm_lang$html$Html$text('Use arrow keys or asdw to play the puzzle')
 				]))
 		]));
 var _user$project$View$view = function (model) {
