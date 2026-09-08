@@ -1,0 +1,33 @@
+name: Update band schedule.ics
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-ics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate schedule.ics from Bandsintown
+        env:
+          BANDSINTOWN_API_KEY: ${{ secrets.BANDSINTOWN_API_KEY }}
+          BANDSINTOWN_ARTIST_ID: "7204242"
+        run: python3 scripts/generate_schedule_ics.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- schedule.ics; then
+            echo "No changes to schedule.ics"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add schedule.ics
+          git commit -m "Update schedule.ics from Bandsintown"
+          git push
