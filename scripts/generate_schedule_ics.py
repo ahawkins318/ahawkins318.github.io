@@ -11,7 +11,6 @@ import sys
 import textwrap
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
 
 API_URL = "https://rest.bandsintown.com/artists/id_{artist_id}/events/"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "schedule.ics")
@@ -75,12 +74,13 @@ def event_to_vevent(event: dict) -> list[str]:
         description_bits.append(event["url"])
     description = "\\n".join(escape_text(b) for b in description_bits)
 
-    now_stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-
+    # DTSTAMP is pinned to the event's own start time (rather than "now")
+    # so the file only changes, and only gets committed, when a show's
+    # actual data changes instead of on every scheduled regeneration.
     lines = [
         "BEGIN:VEVENT",
         f"UID:bandsintown-{event['id']}@ahawkins318.github.io",
-        f"DTSTAMP:{now_stamp}",
+        f"DTSTAMP:{start}Z",
         f"DTSTART:{start}",
     ]
     if end:
