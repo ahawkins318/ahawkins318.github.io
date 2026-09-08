@@ -18,6 +18,7 @@ jobs:
         env:
           BANDSINTOWN_API_KEY: ${{ secrets.BANDSINTOWN_API_KEY }}
           BANDSINTOWN_ARTIST_ID: "7204242"
+          DEBUG_DUMP_RAW: "1"
         run: python3 scripts/generate_schedule_ics.py
 
       - name: Commit and push if changed

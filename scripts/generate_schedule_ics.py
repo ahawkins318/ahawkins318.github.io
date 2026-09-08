@@ -106,6 +106,8 @@ def main() -> None:
     artist_id = os.environ["BANDSINTOWN_ARTIST_ID"]
     api_key = os.environ["BANDSINTOWN_API_KEY"]
     events = fetch_events(artist_id, api_key)
+    if os.environ.get("DEBUG_DUMP_RAW"):
+        print(json.dumps(events, indent=2))
     calendar = build_calendar(events)
     with open(OUTPUT_PATH, "w", newline="") as f:
         f.write(calendar)
