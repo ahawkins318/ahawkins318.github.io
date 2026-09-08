@@ -61,6 +61,12 @@ def event_to_vevent(event: dict) -> list[str]:
     if "T" not in start:
         start += "T000000"
 
+    end = event.get("ends_at")
+    if end:
+        end = end.replace("-", "").replace(":", "").rstrip("Z")
+        if "T" not in end:
+            end += "T000000"
+
     lineup = event.get("lineup") or []
     description_bits = []
     if lineup:
@@ -76,6 +82,10 @@ def event_to_vevent(event: dict) -> list[str]:
         f"UID:bandsintown-{event['id']}@ahawkins318.github.io",
         f"DTSTAMP:{now_stamp}",
         f"DTSTART:{start}",
+    ]
+    if end:
+        lines.append(f"DTEND:{end}")
+    lines += [
         f"SUMMARY:{escape_text(venue_name)}",
         f"LOCATION:{escape_text(location)}",
     ]
@@ -106,8 +116,6 @@ def main() -> None:
     artist_id = os.environ["BANDSINTOWN_ARTIST_ID"]
     api_key = os.environ["BANDSINTOWN_API_KEY"]
     events = fetch_events(artist_id, api_key)
-    if os.environ.get("DEBUG_DUMP_RAW"):
-        print(json.dumps(events, indent=2))
     calendar = build_calendar(events)
     with open(OUTPUT_PATH, "w", newline="") as f:
         f.write(calendar)
