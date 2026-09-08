@@ -22,7 +22,7 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          if git diff --quiet -- schedule.ics; then
+          if [ -z "$(git status --porcelain -- schedule.ics)" ]; then
             echo "No changes to schedule.ics"
             exit 0
           fi
