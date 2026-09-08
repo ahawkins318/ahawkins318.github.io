@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ahawkins318.github.io//band-schedule//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Band Schedule
+BEGIN:VEVENT
+UID:bandsintown-108326270@ahawkins318.github.io
+DTSTAMP:20260908T014737Z
+DTSTART:20260926T120000
+SUMMARY:Duo @ Evangeline’s 
+LOCATION:Duo @ Evangeline’s \, St. Louis\, MO\, United States
+DESCRIPTION:Lineup: Robbie & the Rockin' Fools\nhttps://www.bandsintown.co
+ m/e/108326270?app_id=39fd5ddd98db577cb26455ddf22a48a7&came_from=267&utm_me
+ dium=api&utm_source=public_api&utm_campaign=event
+URL:https://www.bandsintown.com/e/108326270?app_id=39fd5ddd98db577cb26455d
+ df22a48a7&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=
+ event
+END:VEVENT
+BEGIN:VEVENT
+UID:bandsintown-108326272@ahawkins318.github.io
+DTSTAMP:20260908T014737Z
+DTSTART:20261024T120000
+SUMMARY:Duo @ Evangeline’s 
+LOCATION:Duo @ Evangeline’s \, St. Louis\, MO\, United States
+DESCRIPTION:Lineup: Robbie & the Rockin' Fools\nhttps://www.bandsintown.co
+ m/e/108326272?app_id=39fd5ddd98db577cb26455ddf22a48a7&came_from=267&utm_me
+ dium=api&utm_source=public_api&utm_campaign=event
+URL:https://www.bandsintown.com/e/108326272?app_id=39fd5ddd98db577cb26455d
+ df22a48a7&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=
+ event
+END:VEVENT
+END:VCALENDAR
