@@ -6,7 +6,7 @@ METHOD:PUBLISH
 X-WR-CALNAME:Band Schedule
 BEGIN:VEVENT
 UID:bandsintown-108326270@ahawkins318.github.io
-DTSTAMP:20260908T014842Z
+DTSTAMP:20260908T015041Z
 DTSTART:20260926T120000
 SUMMARY:Duo @ Evangeline’s 
 LOCATION:Duo @ Evangeline’s \, St. Louis\, MO\, United States
@@ -19,7 +19,7 @@ URL:https://www.bandsintown.com/e/108326270?app_id=39fd5ddd98db577cb26455d
 END:VEVENT
 BEGIN:VEVENT
 UID:bandsintown-108326272@ahawkins318.github.io
-DTSTAMP:20260908T014842Z
+DTSTAMP:20260908T015041Z
 DTSTART:20261024T120000
 SUMMARY:Duo @ Evangeline’s 
 LOCATION:Duo @ Evangeline’s \, St. Louis\, MO\, United States
